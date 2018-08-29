@@ -9,7 +9,16 @@ import java.util.Scanner;
 import jogo.IJogo;
 
 public class ClienteJogo {
-
+	/**
+	 * Método para executar diversas partidas onde recebe como parâmetro um objeto jogo executado 
+	 * do lado servidor.
+	 * @param jogo
+	 * @param sc
+	 * @throws RemoteException
+	 * @throws NotBoundException
+	 * @throws MalformedURLException
+	 * @throws InterruptedException
+	 */
 	public static void executarPartida(IJogo jogo, Scanner sc) throws RemoteException, NotBoundException, MalformedURLException, InterruptedException{
 		int meuId;
 		meuId = jogo.entrarNaPartida();
@@ -54,7 +63,14 @@ public class ClienteJogo {
 			executarPartida(jogo, sc);
 		}
 	}
-	
+	/**
+	 * Método main para execução transparente do jogo do lado cliente.
+	 * @param args
+	 * @throws RemoteException
+	 * @throws NotBoundException
+	 * @throws MalformedURLException
+	 * @throws InterruptedException
+	 */
 	public static void main(String[] args)
 			throws RemoteException, NotBoundException, MalformedURLException, InterruptedException {
 		IJogo jogo = (IJogo) Naming.lookup("rmi://localhost/Jogo");

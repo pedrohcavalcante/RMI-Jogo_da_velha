@@ -138,6 +138,9 @@ public class Tabuleiro {
         exibirTabuleiro();
     }
 
+    /**
+     * Retorna todo o tabubleiro para ser printado do lado cliente...
+     */
     	@Override
     	public String toString() {
     		StringBuilder sb = new StringBuilder();
