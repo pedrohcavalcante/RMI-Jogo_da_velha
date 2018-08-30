@@ -73,7 +73,10 @@ public class ClienteJogo {
 	 */
 	public static void main(String[] args)
 			throws RemoteException, NotBoundException, MalformedURLException, InterruptedException {
-		IJogo jogo = (IJogo) Naming.lookup("rmi://localhost/Jogo");
+		try {
+			IJogo jogo = (IJogo) Naming.lookup("rmi://localhost/Jogo");
+
+		
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Bem vindo ao jogo da velha!");
@@ -87,5 +90,10 @@ public class ClienteJogo {
 			
 			sc.close();
 		}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.err.println("Servidor não iniciado...");
+		}
 	}
+		
 }
