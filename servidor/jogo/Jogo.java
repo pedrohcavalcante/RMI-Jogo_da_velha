@@ -100,6 +100,7 @@ public class Jogo extends UnicastRemoteObject implements IJogo{
 			numJogadores = 0;
 			tabuleiro.zerarTabuleiro();
 			jogadorDaVez = 1;
+			horarioInicio = System.currentTimeMillis();
 		}
 	}
 }

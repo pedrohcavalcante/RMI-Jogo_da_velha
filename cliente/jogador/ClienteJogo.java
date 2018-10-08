@@ -37,6 +37,9 @@ public class ClienteJogo {
 				System.out.println("Agora informe a coluna");
 				int coluna = sc.nextInt();
 
+				if (jogo.ultrapassouTempo())
+					break;
+				
 				if (jogo.isJogadaValida(meuId, linha, coluna)) {
 					jogo.realizarJogada(meuId, linha, coluna);
 					System.out.println(jogo.getTabuleiro());
