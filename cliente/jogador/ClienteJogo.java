@@ -50,11 +50,19 @@ public class ClienteJogo {
 		}
 		
 		if (jogo.resultadoPartida() ==  meuId) {
-			System.out.println("Parabéns jogador você ganhou um jogo da velha");
+			if(jogo.ultrapassouTempo())
+				System.out.println("O seu oponente foi desconectado por demorar demais para realizar uma jogada.\n "
+						+ "Você se tornou o vencedor!");
+			else
+				System.out.println("Parabéns jogador você ganhou um jogo da velha");
 		} else if(jogo.resultadoPartida() == 0){
 			System.out.println("Empate! sOu você não joga bem, ou ele não joga bem, ou os dois jogam mal!");
 		} else {
-			System.out.println("Perdeu! Precisa aprender a jogar...!");
+			if(jogo.ultrapassouTempo())
+				System.out.println("Você foi desconectado por demorar demais para realizar uma jogada.\n "
+						+ "Você foi considerado o perdedor da partida");
+			else
+				System.out.println("Perdeu! Precisa aprender a jogar...!");
 		}
 		
 		System.out.println("Você deseja começar uma nova partida digite 1, senão digite 0");

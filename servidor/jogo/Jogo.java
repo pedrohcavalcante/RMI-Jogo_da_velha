@@ -10,8 +10,7 @@ public class Jogo extends UnicastRemoteObject implements IJogo{
 	private int jogadorDaVez = 1;
 	private int numJogadores = 0;
 	private long DURACAO_MAXIMA = 45 * 1000;
-	private Calendar contadorTempo = Calendar.getInstance();
-	private long horarioInicio = contadorTempo.getTimeInMillis();
+	private long horarioInicio = System.currentTimeMillis();
 	
 	/**
 	 * Construtor...
@@ -45,7 +44,7 @@ public class Jogo extends UnicastRemoteObject implements IJogo{
 		tabuleiro.setPosicao(posx,  posy, i);
 		jogadorDaVez = (jogadorDaVez % 2) + 1;
 		
-		horarioInicio = contadorTempo.getTimeInMillis();
+		horarioInicio = System.currentTimeMillis();
 		System.out.print("Horario de inicio: ");
 		System.out.println(horarioInicio);
 		return tabuleiro.toString();
@@ -74,15 +73,15 @@ public class Jogo extends UnicastRemoteObject implements IJogo{
 		else if (resultDiagonais != 0)
 			vencedor = resultDiagonais;
 		else if (ultrapassouTempo())
-			vencedor = (jogadorDaVez % 2) + 1;
+			return (jogadorDaVez % 2) + 1;
 		return vencedor == -1 ? 1 : vencedor == 1 ? 2 : 0;	
 	}
 	
 	@Override
 	public boolean ultrapassouTempo() throws RemoteException{
-		System.out.print("O tempo passado em milissegundos é ");
-		System.out.println(contadorTempo.getTimeInMillis() - horarioInicio);
-		return (contadorTempo.getTimeInMillis() - horarioInicio) >= DURACAO_MAXIMA;
+		System.out.print("O tempo passado em milissegundos ï¿½ ");
+		System.out.println(System.currentTimeMillis() - horarioInicio);
+		return (System.currentTimeMillis() - horarioInicio) >= DURACAO_MAXIMA;
 	}
 
 	@Override
