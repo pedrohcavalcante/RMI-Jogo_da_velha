@@ -66,4 +66,6 @@ public interface IJogo extends Remote {
      * @throws RemoteException
      */
     public void newGame() throws RemoteException;
+    
+    public boolean ultrapassouTempo() throws RemoteException;
 }
